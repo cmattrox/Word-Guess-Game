@@ -1,3 +1,20 @@
 #content{
     border-style: dotted;
 }
+#title {
+    background-image: url("../images/Geometric+Wallpaper.jpg");
+}
+h1 {
+    font-weight: bold;
+    padding-left: 250px
+}
+.container {
+    max-width: 1080px;
+    background-color: #d4e1f7
+}
+.title {
+    background-color: white
+}
+body:not(#title) {
+    background-image: url("../images/country-quilt.png")
+}

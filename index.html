@@ -15,33 +15,38 @@
     <div class="row">
         <div class="col-sm-12">
             <div class="jumbotron jumbotron-fluid" id="title">
+                <h1 class="display-4 justify-content-center title">Alternative</h1>
+                <h1 class="display-4 justify-content-center title">Hangman</h1>
+            </div>
+            
+        </div>
+    </div>
+    <div class="container">
+        <h3>Wins:</h3>
+        <span id="wins"></span>
+        <br>
+        <h3>Guesses:</h3>
+        <span id="guesses"></span>
+        <div class="row">
+            <div class="col-sm-6" id="content">
+                <div class="container" id="previous-word">
+
+                </div>
                 <div class="container">
-                    <h1 class="display-4 justify-content-center">Alternative</h1>
-                    <h1 class="display-4 justify-content-center">Hangman</h1>
+                    <h4 >Letters Already Guessed:</h4>
+                    <span id="wrongGuesses"></span>
                 </div>
             </div>
-            <h3>Wins:</h3>
-            <br>
-            <h3>Guesses:</h3>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-6" id="content">
-            <div class="container" id="previous-word">
-
-            </div>
-            <div class="container" id="wrong-guesses">
-                <h4>Letters Already Guessed:</h4>
-            </div>
-        </div>
-        <div class="col-sm-6" id="content">
-            <div class="container">
-                <h4>Press Any Key To Get Started!</h4>
-            </div>
-            <div class="container" id="current-word">
-
+            <div class="col-sm-6" id="content">
+                <div class="container">
+                    <h4>Press Any Key To Get Started!</h4>
+                </div>
+                <div class="container">
+                    <span id="current-word"></span>
+                </div>
             </div>
         </div>
     </div>
+    
 </body>
 </html>

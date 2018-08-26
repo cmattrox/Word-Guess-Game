@@ -1,49 +1,62 @@
-$(document).ready(function() {
+$(document).ready(function () {
     var wins = 0;
-    var guesses = 8;
-    var words = ["young-the-giant", "phoenix", "twenty-one-pilots", "glass-animals", "rainbow-kitten-surprise", "mumford-and-sons"];
-    var currentWord = words[Math.floor(Math.random()* words.length)];
+    var words = ["grouplove", "foals", "mgmt", "lovelytheband", "joywave", "phoenix"];
+    function randomWord () {
+        return words[Math.floor(Math.random() * words.length)];
+    };
+    var currentWord = randomWord();
+    console.log(currentWord)
+    var blank = "_";
     var answerTokens = [];
-    var indexesFound = [];
-    var lastIndex
-    for (i=0; i < currentWord.length; i++){
-        var space = $("<h5>");
-        $("#current-word").append(space);
-        
-        if(currentWord[i] === "-" || currentWord[i] === " "){
-            answerTokens.push(currentWord[i]);
-        }
-        else {
-            answerTokens.push("_");
-        }
+    for (i = 0; i < currentWord.length; i++) {answerTokens.push("_")};
+    var guesses = 8;
+    var wins = 0;
+    var guessCounter = 1;
+    var guessed = [];
+
+    function startGame() {
+        $("#current-word").html(answerTokens.join(" "));
+        $("#guesses").html(guesses);
+        $("#wins").html(wins);
     }
-    
-    $("#current-word").text(answerTokens.join(" "));
 
-    $(document).keyup(function(event) {
-        // var indexesFound = [];
-        // var lastIndex = 0;
+    startGame();
+
+
+    $(document).keyup(function (event) {
         var userGuess = event.key.toLowerCase();
-        console.log(userGuess);
+        console.log(userGuess)
+        console.log(currentWord)
 
-        while (lastIndex != -1) {
-            lastIndex = currentWord.indexOf(userGuess, lastIndex);
-            console.log(lastIndex);
+        if (guessed.indexOf(userGuess) == -1){
+            guessed.push(userGuess);
+            $("#wrongGuesses").html(guessed.join(", "));
+        };
 
-            if(lastIndex != -1){
-                indexesFound.push(lastIndex);
-                console.log(indexesFound.join(" "));
+        if (currentWord.indexOf(userGuess) > -1) {
+            for (i=0; i<currentWord.length; i++) {
+                if (currentWord[i] == userGuess) {
+                    answerTokens.splice(i, 1, userGuess);
+                    console.log(answerTokens)
+                    $("#current-word").html(answerTokens.join(" "));
+                }
             }
-            return indexesFound;
+            if (answerTokens.join("") == currentWord) {
+                alert("congrats you won");
+                wins ++;
+                // $("#wins").html(wins)
+                document.location.reload
+            }
+        } else {
+            var misses = guessCounter++;
+            var guessCountMiss = (guesses - misses);
+            $("#guesses").html(guessCountMiss);
+
+            if (guessCountMiss == 0) {
+                alert("Sorry you lost try again");
+                document.location.reload
+            }
         }
-        
-
     })
-    
-
-
-
-
-
 
 })
